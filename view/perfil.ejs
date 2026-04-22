@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <!-- Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/">Mi Perfil Web</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/perfil">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/album">Álbum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contactos">Contactos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/favoritos">
+              Favoritos <span class="badge bg-success" id="favoritosCount">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <div class="container mt-5">
+    <!-- Header del Perfil -->
+    <div class="row mb-5">
+      <div class="col-lg-4 mb-4">
+        <div class="card shadow-lg border-0 text-center">
+          <img src="<%= datos.perfil.foto %>" alt="<%= datos.perfil.nombre %>" class="card-img-top rounded-top">
+          <div class="card-body">
+            <h3 class="card-title fw-bold"><%= datos.perfil.nombre %> <%= datos.perfil.apellido %></h3>
+            <p class="text-muted mb-3"><%= datos.perfil.profesion %></p>
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary">Seguir</button>
+              <button class="btn btn-outline-primary">Enviar Mensaje</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información Detallada -->
+      <div class="col-lg-8">
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">📋 Información Personal</h5>
+          </div>
+          <div class="card-body">
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h6 class="fw-bold text-primary">Nombre Completo</h6>
+                <p><%= datos.perfil.nombre %> <%= datos.perfil.apellido %></p>
+              </div>
+              <div class="col-md-6">
+                <h6 class="fw-bold text-primary">Profesión</h6>
+                <p><%= datos.perfil.profesion %></p>
+              </div>
+            </div>
+
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <h6 class="fw-bold text-primary">📍 Ubicación</h6>
+                <p><%= datos.perfil.ciudad %></p>
+              </div>
+              <div class="col-md-6">
+                <h6 class="fw-bold text-primary">📧 Email</h6>
+                <p><a href="mailto:<%= datos.perfil.email %>"><%= datos.perfil.email %></a></p>
+              </div>
+            </div>
+
+            <hr>
+
+            <h6 class="fw-bold text-primary">📝 Descripción</h6>
+            <p class="lead"><%= datos.perfil.descripcion %></p>
+          </div>
+        </div>
+
+        <!-- Estadísticas -->
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-body text-center">
+                <h5 class="text-muted">Álbumes</h5>
+                <h3 class="text-primary fw-bold"><%= datos.albumes.length %></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+              <div class="card-body text-center">
+                <h5 class="text-muted">Fotos Totales</h5>
+                <h3 class="text-primary fw-bold"><%= datos.albumes.reduce((total, album) => total + album.fotos.length, 0) %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Intereses/Habilidades -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0">🎯 Habilidades y Intereses</h5>
+          </div>
+          <div class="card-body">
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge bg-info">JavaScript</span>
+              <span class="badge bg-info">Node.js</span>
+              <span class="badge bg-info">Express</span>
+              <span class="badge bg-info">EJS</span>
+              <span class="badge bg-info">Bootstrap</span>
+              <span class="badge bg-warning">HTML5</span>
+              <span class="badge bg-warning">CSS3</span>
+              <span class="badge bg-warning">AJAX</span>
+              <span class="badge bg-success">Fotografía</span>
+              <span class="badge bg-success">Senderismo</span>
+              <span class="badge bg-success">Viajes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Últimas Actividades -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-lg border-0">
+          <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0">📅 Actividad Reciente</h5>
+          </div>
+          <div class="card-body">
+            <div class="timeline">
+              <div class="timeline-item mb-4">
+                <div class="timeline-marker bg-primary"></div>
+                <div class="ms-4">
+                  <h6 class="fw-bold">Publicó 3 fotos nuevas</h6>
+                  <p class="text-muted">Hace 2 días - Álbum: Viaje a Barcelona</p>
+                </div>
+              </div>
+              <div class="timeline-item mb-4">
+                <div class="timeline-marker bg-success"></div>
+                <div class="ms-4">
+                  <h6 class="fw-bold">Agregó 5 contactos nuevos</h6>
+                  <p class="text-muted">Hace 5 días</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-marker bg-info"></div>
+                <div class="ms-4">
+                  <h6 class="fw-bold">Creó el perfil</h6>
+                  <p class="text-muted">Hace 1 mes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>&copy; 2025 Mi Aplicación de Perfil. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>

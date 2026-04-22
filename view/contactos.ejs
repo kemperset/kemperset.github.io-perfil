@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Contactos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+  <!-- Navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/">Mi Perfil Web</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/perfil">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/album">Álbum</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/contactos">Contactos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/favoritos">
+              Favoritos <span class="badge bg-success" id="favoritosCount">0</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <div class="container mt-5">
+    <h1 class="mb-5 text-center">📞 Mis Contactos</h1>
+
+    <!-- Filtro y búsqueda -->
+    <div class="row mb-4">
+      <div class="col-md-6 mx-auto">
+        <div class="input-group">
+          <input type="text" class="form-control" id="searchContactos" placeholder="Buscar contacto...">
+          <button class="btn btn-primary" type="button" id="btnBuscar">🔍 Buscar</button>
+        </div>
+        <small class="text-muted">Busca por nombre o email</small>
+      </div>
+    </div>
+
+    <!-- Contactos -->
+    <div class="row" id="contactosContainer">
+      <% contactos.forEach(contacto => { %>
+        <div class="col-md-6 mb-4 contacto-item">
+          <div class="card shadow-sm border-0 h-100 contacto-card" data-contacto-id="<%= contacto.id %>">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h5 class="card-title mb-0"><%= contacto.nombre %></h5>
+                  <small class="text-muted">Contacto</small>
+                </div>
+                <span class="badge bg-primary contacto-badge">ID: <%= contacto.id %></span>
+              </div>
+
+              <div class="contact-info mb-3">
+                <p class="mb-2">
+                  <strong>📧 Email:</strong><br>
+                  <a href="mailto:<%= contacto.email %>"><%= contacto.email %></a>
+                </p>
+                <p class="mb-2">
+                  <strong>📞 Teléfono:</strong><br>
+                  <a href="tel:<%= contacto.telefono %>"><%= contacto.telefono %></a>
+                </p>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-primary btn-sm enviar-mensaje-btn" data-contacto-id="<%= contacto.id %>" data-nombre="<%= contacto.nombre %>">
+                  ✉️ Enviar Mensaje
+                </button>
+                <button class="btn btn-outline-warning btn-sm agregar-favorito-btn" data-contacto-id="<%= contacto.id %>" data-nombre="<%= contacto.nombre %>">
+                  ⭐ Agregar a Favoritos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+
+    <!-- Resultado de búsqueda vacío -->
+    <div id="sinResultados" class="alert alert-info text-center" style="display: none;">
+      <p class="mb-0">No se encontraron contactos con esos criterios.</p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="row mt-5">
+      <div class="col-lg-8 mx-auto">
+        <div class="card border-0 shadow-lg bg-light">
+          <div class="card-body text-center">
+            <h5 class="card-title">Estadísticas de Contactos</h5>
+            <div class="row mt-4">
+              <div class="col-6">
+                <p class="fs-5 fw-bold text-primary" id="totalContactos"><%= contactos.length %></p>
+                <p class="text-muted">Contactos Totales</p>
+              </div>
+              <div class="col-6">
+                <p class="fs-5 fw-bold text-warning" id="contactosFav">0</p>
+                <p class="text-muted">En Favoritos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info AJAX -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="alert alert-success" role="alert">
+          <strong>💡 Nota:</strong> Esta página usa <strong>AJAX</strong> para cargar y filtrar contactos sin recargar la página.
+          Intenta buscar un contacto o agregar uno a favoritos.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para mensajes -->
+  <div class="modal fade" id="modalMensaje" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Enviar Mensaje a <span id="nombreContacto"></span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formularioMensaje">
+            <div class="mb-3">
+              <label for="asunto" class="form-label">Asunto</label>
+              <input type="text" class="form-control" id="asunto" required>
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea class="form-control" id="mensaje" rows="4" required></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="btnEnviarMensaje">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <p>&copy; 2025 Mi Aplicación de Perfil. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/script.js"></script>
+</body>
+</html>

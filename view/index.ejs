@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e1e3e4",
+                    "surface-dim": "#d9dadb",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "tertiary-container": "#63717b",
+                    "outline-variant": "#c2c6d9",
+                    "primary-container": "#0062ff",
+                    "surface": "#ffffff",
+                    "surface-tint": "#0053da",
+                    "on-surface-variant": "#424656",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#bac9d3",
+                    "on-background": "#191c1d",
+                    "background": "#f0f7ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-secondary-container": "#4e6874",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#cbe7f5",
+                    "on-primary-container": "#f3f3ff",
+                    "secondary-container": "#cbe7f5",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#4b5962",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#48626e",
+                    "inverse-primary": "#b4c5ff",
+                    "outline": "#737687",
+                    "on-tertiary-fixed-variant": "#3b4951",
+                    "surface-container-low": "#f3f4f5",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary": "#004cca",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary-fixed-variant": "#304a55",
+                    "surface-container": "#edeeef",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#e9f5ff",
+                    "tertiary-fixed": "#d6e5ef",
+                    "on-secondary-fixed": "#021f29",
+                    "surface-bright": "#f8f9fa",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#0f1d25",
+                    "on-primary-fixed": "#00174b",
+                    "secondary-fixed-dim": "#afcbd8",
+                    "surface-container-highest": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "xl": "80px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "container-max": "1140px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .profile-cover {
+            height: 240px;
+            background: linear-gradient(135deg, #004cca 0%, #0062ff 100%);
+            border-bottom-left-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
+<div class="flex justify-between items-center h-16 px-4 md:px-8 max-w-[1140px] mx-auto w-full">
+<div class="flex items-center gap-base">
+<span class="text-xl font-bold tracking-tight text-blue-600 dark:text-blue-400">ProConnect</span>
+</div>
+<nav class="hidden md:flex items-center gap-lg h-full">
+<a class="font-plus-jakarta-sans text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex items-center h-full" href="#">Inicio</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex items-center h-full" href="#">Red</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 flex items-center h-full" href="#">Empleos</a>
+<a class="font-plus-jakarta-sans text-sm font-medium text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 pb-0 flex items-center h-full" href="#">Perfil</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="p-2 text-gray-500 hover:bg-gray-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-gray-500 hover:bg-gray-50 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full object-cover ring-2 ring-surface-container" data-alt="Professional portrait of a confident smiling man in a tailored blazer against a clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6eWSgs642wiYkp4q-6IX0qSYEf-gnlPBt1A-MizOn6d6ZFS-9H2Qq9-mS-p09p0l8_D8apYWsQIalL3ZoLcwRJhge8NJMeKpKkT-gzxDp_Vnl8kpv5dwQSzvRh2hH7SCE4sFCPIyDLtbzYsgLvnPziw-vqdkoJoCx9UsusV6hbvTwe6u5wkc7_aZzx55695_Ph8KdClY_J5pOgaQkGYK2mcYQnEWaEARl1js1YGwqFwqjSZGKc_bE_NwGgaN-ux7vmUH9Qa1kfIw"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1140px] mx-auto px-4 md:px-gutter py-md pb-xl">
+<!-- Profile Header Section -->
+<section class="relative mb-lg">
+<div class="profile-cover w-full shadow-lg relative overflow-hidden" data-alt="Abstract geometric background with subtle flowing blue gradients and soft professional texture">
+<div class="absolute inset-0 opacity-20">
+<img class="w-full h-full object-cover" data-alt="abstract blue flowing waves gradient with subtle digital noise and professional corporate lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB16V17uP5xlul9DYamE10_Aik-V_WmCN4CTskbevFmGbipuZyc3ZqOF0YknoFxjUbdSyO4bhWP5jP4UcUIjKDvBikf1RfBP0cntbyieqp5xmX-X8yLiEPRid3cuUsbhq3QyYT8_Pr8Z3WCXbOa8ftZ44kWKVWcKK9NZ9GpTm3MDGAbTu4fVgJTdBJ1FzYeN0vOeBcq5d1F0AUIIr0Bfirf-Jo1tYpUuFxce7OMztcq3HJEKxuS8ynO_7sSRb7Q6HspEWqsBRydjQ"/>
+</div>
+</div>
+<div class="px-md md:px-lg -mt-16 flex flex-col md:flex-row md:items-end md:justify-between gap-md relative z-10">
+<div class="flex flex-col md:flex-row items-start md:items-end gap-md">
+<div class="relative">
+<img alt="User profile avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-lg object-cover" data-alt="Close up professional portrait of a man with short dark hair wearing a neutral grey business shirt and friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV3hAAIDIaHx_xg_nCaeYzSRyCDSuPthfOXKr9-Fe6nuLFCUbJOnj4c5WhW3v5YOUrZM0H4Ej_FKUZqVxn_Cg1tZXd5QzF2fXLtM9utH7o4oIhh0ugyEvM3BhCNTxUowFIQxBwo0Mo-WKmRgqFeK0_RNtdfMGZ4rqrJ-g_WKsotLLuNALCT0JlcEPFHW6AMI5zP5hEqcBhe1nKMh33pzpGrPB9B4Id0MqNBFsHur2nO2MRmR14HU2W4chIUuWou-sr6BuJFVCYxoo"/>
+<div class="absolute bottom-2 right-2 w-6 h-6 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="pb-base">
+<h1 class="font-headline-lg text-on-surface">Kemper Aspajo</h1>
+<p class="font-body-lg text-on-surface-variant">Ingeniero de Software en SENATI</p>
+<div class="flex items-center gap-sm mt-xs text-outline font-label-md uppercase tracking-wider">
+<span class="flex items-center gap-xs"><span class="material-symbols-outlined text-[18px]">location_on</span> PUCALLPA, PERU</span>
+<span>•</span>
+<span class="text-primary font-bold">Abierto a Trabajar</span>
+</div>
+</div>
+</div>
+<div class="flex gap-sm pb-base">
+<button class="bg-primary text-white px-gutter py-3 rounded-lg font-label-md hover:translate-y-[-1px] transition-all shadow-md active:scale-95 flex items-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+                        Conectar
+                    </button>
+<button class="bg-white border border-primary text-primary px-gutter py-3 rounded-lg font-label-md hover:bg-surface-container-low transition-all active:scale-95 flex items-center gap-sm">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+                        Mensaje
+                    </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Bento Stats & Bio -->
+<div class="lg:col-span-4 space-y-gutter">
+<!-- Bento Stats Card -->
+<div class="bg-white p-md rounded-xl border shadow-sm grid grid-cols-2 gap-md border-blue-100">
+<div class="p-sm rounded-lg text-center bg-blue-50/50">
+<p class="font-headline-md text-primary">1k</p>
+<p class="font-label-sm text-outline">Conexiones</p>
+</div>
+<div class="p-sm rounded-lg text-center bg-blue-50/50">
+<p class="font-headline-md text-primary">48</p>
+<p class="font-label-sm text-outline">Artículos</p>
+</div>
+<div class="p-sm rounded-lg text-center bg-blue-50/50">
+<p class="font-headline-md text-primary">850</p>
+<p class="font-label-sm text-outline">Seguidores</p>
+</div>
+<div class="p-sm rounded-lg text-center bg-blue-50/50">
+<p class="font-headline-md text-primary">12</p>
+<p class="font-label-sm text-outline">Proyectos</p>
+</div>
+</div>
+<!-- Bio & Skills -->
+<div class="bg-white p-md rounded-xl border shadow-sm space-y-md border-blue-100">
+<h2 class="font-headline-md text-on-surface">Acerca de</h2>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        Apasionado por cerrar la brecha entre la tecnología compleja y el diseño centrado en el ser humano. Con mas de 5 años de experiencia en desarrollo de software, me especializo en crear soluciones intuitivas que resuelven problemas reales. Mi enfoque se basa en la colaboración interdisciplinaria y la innovación constante para impulsar el impacto positivo a través de la tecnología.
+<div class="flex flex-wrap gap-xs">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm">Estrategia UX</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm">Visión de Producto</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm">Figma</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm">Liderazgo</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm">Ágil</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Experience & Feed -->
+<div class="lg:col-span-8 space-y-gutter">
+<!-- Experience Section -->
+<div class="bg-white p-md rounded-xl border shadow-sm border-blue-100">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-on-surface">Experiencia</h2>
+<button class="text-primary font-label-md flex items-center gap-xs">
+                            Ver Todo <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-lg">
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface text-base">Estratega Senior de SENATI</h3>
+<p class="font-body-sm text-outline">FinTech Solutions • Tiempo completo</p>
+<p class="font-body-sm text-outline mb-base">Ene 2021 - Presente • 3 años 4 meses</p>
+<p class="font-body-md text-on-surface-variant">Liderando la transformación digital de los paneles de banca empresarial para más de 5M de usuarios a nivel global.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface text-base">Líder de Diseño de Producto</h3>
+<p class="font-body-sm text-outline">Nova Growth Systems • Tiempo completo</p>
+<p class="font-body-sm text-outline mb-base">Jun 2018 - Dic 2020 • 2 años 7 meses</p>
+<p class="font-body-md text-on-surface-variant">Establecí el sistema de diseño que escaló la compañía desde la Serie A hasta la financiación de Serie C.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Section -->
+<div class="space-y-md">
+<h2 class="font-headline-md text-on-surface">Actividad Reciente</h2>
+<!-- Post 1 -->
+<div class="bg-white rounded-xl border shadow-sm overflow-hidden border-blue-100">
+<div class="p-md">
+<div class="flex items-center gap-sm mb-md">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="small circular profile thumbnail of a professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdL4jfWhy56xLU-q5eXGpbaOzgGcjOl3erZ1ymdezNBDEAShSpbYjm627qffS0oA3_a_Nw45W2kyegtITfE4s5Nmf5kKqhwetr9Kh4oPsKdvDJyv3paEAPPR45K9xeKRSrhjM2CsCBiI8Oro_iSe7DxD-aUbp4dVF4_5PPHVezLGdKniRhsjjrG_VNXQb3Fh10j9OfxUAlcdfF8BI6MFASB-vRrITyXRRNsIOgK1lfLx9ScdOWE3uOX4ZHBSkMxV4nN13C3Rn_XtM"/>
+<div>
+<h4 class="font-label-md text-on-surface">Kemper Aspajo publicó esto</h4>
+<p class="font-body-sm text-outline">Hace 12 horas</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant mb-md leading-relaxed">
+                                Muy emocionado de compartir los resultados iniciales de la implementación de nuestro nuevo sistema de diseño. Hemos visto un aumento del 30% en la velocidad de desarrollo y una mejora significativa en la consistencia de marca en nuestras aplicaciones móviles y de escritorio. ¿Qué opinan sobre la nueva iconografía? 🚀
+                            </p>
+</div>
+<img class="w-full h-64 object-cover" data-alt="Clean and modern workspace with a high-end laptop showing complex UI design wireframes and colorful design system tokens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmyfmgm9XpjjsocItLlKSaZuyjVb5lxbGFAJ1HeDeOEPRd2AbpFOI-VcNmWPBo4HKS8eVQJXyvssLOtpGkaWWPj4Ge6CupdCGQEvILNchRAXa064bFzvUedT-jqHV89zMeP6XEHlrI9e0EV5q8ZOgqx8HbRZEg5qG7T47ARaZ_wlDbwTkPDUk0xtpdNdCOL7stxm1LEdRpXTZPOEFbwR1RBkIR3wPy6D5mf6QJ9kfhCCle9UeonsbIqisj25XyCwoDKra9DfWGJ3I"/>
+<div class="p-sm flex items-center justify-between border-t border-outline-variant">
+<div class="flex gap-md">
+<button class="flex items-center gap-xs font-label-md text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span> 124
+                                </button>
+<button class="flex items-center gap-xs font-label-md text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span> 18
+                                </button>
+<button class="flex items-center gap-xs font-label-md text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">share</span> 5
+                                </button>
+</div>
+<button class="material-symbols-outlined text-outline">bookmark</button>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="bg-white rounded-xl border shadow-sm p-md border-blue-100">
+<div class="flex items-center gap-sm mb-md">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="small circular profile thumbnail of a professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAYVCpAHwkX3h-_8_mOIkHxPAz-pw-ujAk6tKsh8gm5E_c1OAI3dt2gGCGhY90su4vBaX-A8HU9NczxCUfRQqF82nrQx6c5W2AgGR4UO_Y6s69eNHeQ3mKnt7GL8f69-8MN7kn96uqJehELgxY4JAGchplWIyv7pD2ey5L3F__iaWMD7gznlz_31--livmg0vDwXfJQzYmgGcpPH0qJ8wzBjl8zWExTCk1CYYsAuc91yl6tk_zYpBbaWRC52SlLTWOLWoPY427REA"/>
+<div>
+<h4 class="font-label-md text-on-surface">Marcus Sterling compartió un artículo</h4>
+<p class="font-body-sm text-outline">Hace 2 días</p>
+</div>
+</div>
+<div class="border border-outline-variant rounded-lg overflow-hidden flex flex-col md:flex-row">
+<img class="w-full md:w-48 h-32 md:h-auto object-cover" data-alt="Modern collaborative office space with people working on computers in a bright airy environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvybF0vQxkAYmN5yEaikZuOLH3-pNwUIhCw_d2T4KUG0dxw3MXSRJbANyGOCz1fAOS01iy85s5wSiAqxc2A8VAdt9ZSnZucrAFYcXzxto98IFE8kSWxXlzrq-z2k6Lkuute_ogtgrXQ3JQ6JruAomv4TZg4ZFRPwk8eZJzq58efr48_a_UBL7WRojP-VklhN1Aet6BEiUcFq2MeQd9Ovrs4jIj5wgiBlukCT9-evgqWUdVwkB63594sw_mGUo_15IK7Kp-31uCSpU"/>
+<div class="p-md">
+<h5 class="font-label-md text-on-surface mb-xs">Por qué las 'Habilidades Blandas' son las Más Difíciles de Dominar en 2024</h5>
+<p class="font-body-sm text-outline mb-sm">medium.com • 6 min de lectura</p>
+<p class="font-body-sm text-on-surface-variant line-clamp-2">La empatía, la comunicación y la adaptabilidad ya no son extras opcionales para los equipos de ingeniería...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 pb-safe md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-800 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-plus-jakarta-sans text-[10px] font-semibold">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-plus-jakarta-sans text-[10px] font-semibold">Red</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-all active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">add_box</span>
+<span class="font-plus-jakarta-sans text-[10px] font-semibold">Publicar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg px-3 py-1 active:scale-90 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-plus-jakarta-sans text-[10px] font-semibold">Perfil</span>
+</a>
+</nav>
+</body></html>
